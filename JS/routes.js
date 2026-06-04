@@ -20,7 +20,7 @@ router.post('/logout', (req, res) => {
 
 router.get('/api/students', verifyToken, verifyTeacher, async (req, res) => {
     try {
-        const students = await query('SELECT id, username, permission, LV FROM users');
+        const students = await query('SELECT id, username, permission, lv FROM users');
         res.json(students || []);
     } catch (err) {
         console.error('[STUDENTS] list failed:', err.message);
@@ -30,7 +30,8 @@ router.get('/api/students', verifyToken, verifyTeacher, async (req, res) => {
 
 router.get('/api/students/:id', verifyToken, verifyTeacher, async (req, res) => {
     try {
-        const [student] = await query('SELECT id, username, LV, email FROM users WHERE id = ?', [req.params.id]);
+        const rows = await query('SELECT id, username, lv, email FROM users WHERE id = $1', [req.params.id]);
+        const student = rows[0];
         if (!student) return res.status(404).json({ message: 'Student not found' });
         res.json(student);
     } catch (err) {
@@ -41,13 +42,14 @@ router.get('/api/students/:id', verifyToken, verifyTeacher, async (req, res) => 
 
 router.get('/api/user/activity/:id', verifyToken, async (req, res) => {
     try {
+        // PostgreSQL 환경에 맞게 TO_CHAR 함수로 날짜 포맷팅 변경
         const activityData = await query(`
             SELECT
-                DATE_FORMAT(solved_at, '%Y-%m-%d') as date,
+                TO_CHAR(solved_at, 'YYYY-MM-DD') as date,
                 COUNT(DISTINCT problem_id) as count
             FROM solve_history
-            WHERE user_id = ?
-            GROUP BY DATE_FORMAT(solved_at, '%Y-%m-%d')
+            WHERE user_id = $1
+            GROUP BY TO_CHAR(solved_at, 'YYYY-MM-DD')
             ORDER BY date ASC
         `, [req.params.id]);
         res.json(activityData || []);
@@ -67,12 +69,12 @@ router.get('/api/rank', async (req, res) => {
             SELECT
                 u.id,
                 u.username,
-                COALESCE(u.LV, 1) AS LV,
+                COALESCE(u.lv, 1) AS lv,
                 COUNT(DISTINCT sh.problem_id) AS solved_count
             FROM users u
             LEFT JOIN solve_history sh ON sh.user_id = u.id
-            GROUP BY u.id, u.username, u.LV
-            ORDER BY LV DESC, solved_count DESC, u.username ASC
+            GROUP BY u.id, u.username, u.lv
+            ORDER BY lv DESC, solved_count DESC, u.username ASC
         `);
         res.json(rows || []);
     } catch (err) {
@@ -93,7 +95,8 @@ router.get('/api/notices', async (req, res) => {
 
 router.get('/api/notices/:id', async (req, res) => {
     try {
-        const [notice] = await query('SELECT id, title, content, created_at FROM notice WHERE id = ?', [req.params.id]);
+        const rows = await query('SELECT id, title, content, created_at FROM notice WHERE id = $1', [req.params.id]);
+        const notice = rows[0];
         if (!notice) return res.status(404).json({ message: 'Notice not found' });
         res.json(notice);
     } catch (err) {

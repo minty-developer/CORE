@@ -1,4 +1,4 @@
-import mysql from 'mysql2/promise';
+import pg from 'pg';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -11,25 +11,25 @@ export const env = {
     port: process.env.PORT || 3000,
     baseUrl: process.env.BASE_URL || 'http://localhost:3000',
     jwtSecret: process.env.JWT_SECRET,
-    db: {
-        host: process.env.DB_HOST || 'localhost',
-        user: process.env.DB_USER,
-        password: process.env.DB_PASSWORD,
-        database: process.env.DB_NAME || 'CORE_User_Database',
-        waitForConnections: true,
-        connectionLimit: 10,
-    },
+    databaseUrl: process.env.DATABASE_URL, // Supabase 연결 문자열 (postgresql://...)
     email: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
     },
 };
 
-const pool = mysql.createPool(env.db);
+// PostgreSQL 연결 풀 생성
+const pool = new pg.Pool({
+    connectionString: env.databaseUrl,
+    ssl: {
+        rejectUnauthorized: false // 클라우드 DB 보안 연결 필수 설정
+    }
+});
 
+// 기존 query 함수 규격을 유지하여 다른 파일의 수정을 최소화합니다.
 export async function query(sql, params) {
-    const [rows] = await pool.execute(sql, params);
-    return rows;
+    const res = await pool.query(sql, params);
+    return res.rows; // PostgreSQL은 결과가 res.rows에 배열로 담깁니다.
 }
 
 export default pool;
