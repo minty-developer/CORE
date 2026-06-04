@@ -1,0 +1,208 @@
+:root {
+    --bg: #101317;
+    --panel: #191f25;
+    --panel-soft: #222932;
+    --line: #303943;
+    --text: #eef3f1;
+    --muted: #99a6a0;
+    --green: #19c463;
+    --green-dark: #0d7f3d;
+    --navy: #050536;
+    --shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Pretendard, "Segoe UI", sans-serif;
+}
+
+.Title_Box {
+    position: relative;
+    display: flex;
+    min-height: 210px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+    background: #121212;
+    border-bottom: 1px solid rgba(25, 196, 99, 0.25);
+}
+
+.Title_Box::before {
+    content: "01000011 01001111 01010010 01000101 00100000 01000011 01101111 01100100 01100101 00100000 01001111 01110000 01110100 01101001 01101101 01101001 01111010 01100101";
+    position: absolute;
+    inset: 0;
+    color: rgba(25, 196, 99, 0.36);
+    font-family: "Courier New", monospace;
+    font-size: 1.15rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.Title_Box::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(25, 196, 99, 0.13), transparent 42%);
+}
+
+.logo,
+.Title_Box p {
+    position: relative;
+    z-index: 1;
+}
+
+.logo {
+    color: var(--green);
+    font-size: clamp(3rem, 8vw, 5.2rem);
+    font-weight: 900;
+    letter-spacing: 0;
+}
+
+.Title_Box p {
+    margin-top: 8px;
+    color: #d9e7dd;
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.navbar {
+    display: flex;
+    min-height: 64px;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 10px 18px;
+    background: var(--navy);
+    box-shadow: var(--shadow);
+    flex-wrap: wrap;
+}
+
+.navbar a {
+    min-width: 96px;
+    border-radius: 8px;
+    color: #dce4ee;
+    font-size: 0.96rem;
+    font-weight: 800;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.navbar a:hover {
+    background: rgba(255, 255, 255, 0.11);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.content-bottom {
+    display: grid;
+    width: min(1020px, calc(100% - 32px));
+    gap: 22px;
+    margin: 34px auto;
+}
+
+.intruduce-box,
+.notice-box {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    padding: 28px;
+}
+
+.notice-box {
+    min-height: 220px;
+}
+
+.intruduce-header,
+.notice-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+}
+
+h3 {
+    color: var(--green);
+    font-size: 1.25rem;
+}
+
+.intruduce-header a,
+.notice-header a {
+    color: var(--muted);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.intruduce-header a:hover,
+.notice-header a:hover {
+    color: var(--green);
+}
+
+.coment-header {
+    margin-bottom: 18px;
+    color: #ffffff;
+    font-size: 1.18rem;
+    text-align: center;
+}
+
+.coment {
+    color: var(--muted);
+    line-height: 1.7;
+    text-align: right;
+}
+
+.notice-list {
+    display: grid;
+    gap: 8px;
+}
+
+.notice-list li {
+    display: flex;
+    gap: 12px;
+    border-radius: 8px;
+    color: #c7d2cc;
+    cursor: pointer;
+    list-style: none;
+    padding: 12px 10px;
+}
+
+.notice-list li:hover {
+    background: var(--panel-soft);
+    color: #ffffff;
+}
+
+.date {
+    color: var(--green);
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+    .Title_Box {
+        min-height: 180px;
+    }
+
+    .navbar a {
+        flex: 1 1 42%;
+    }
+
+    .intruduce-header,
+    .notice-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

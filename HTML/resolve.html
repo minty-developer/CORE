@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolve - 문제 목록</title>
+    <link href="../CSS/resolve.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="page-hero">
+        <a href="/" class="home-btn">HOME</a>
+        <p class="eyebrow">Problem Set</p>
+        <h1>Solve</h1>
+        <p>문제를 고르고 풀이를 제출하세요.</p>
+    </header>
+
+    <main class="problem-page">
+        <section class="toolbar" aria-label="문제 검색과 필터">
+            <input type="search" id="searchInput" placeholder="문제 번호 또는 제목 검색" aria-label="문제 검색">
+            <select id="diffFilter" title="난이도 보기">
+                <option value="all">전체 난이도</option>
+                <option value="1">Easy</option>
+                <option value="2">Medium</option>
+                <option value="3">Hard</option>
+            </select>
+        </section>
+
+        <section class="table-card">
+            <table>
+                <thead>
+                    <tr>
+                        <th title="문제 번호">No.</th>
+                        <th>문제 제목</th>
+                        <th>제한 사항</th>
+                        <th>난이도</th>
+                        <th>작성자</th>
+                        <th>상태</th>
+                    </tr>
+                </thead>
+                <tbody id="LST">
+                    <tr>
+                        <td colspan="6">문제 목록을 불러오는 중...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script type="module" src="../JS/core-ui.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mypage</title>
+    <link href="../CSS/MyPage.css" rel="stylesheet">
+</head>
+
+<body>
+    <main class="mypage">
+        <header class="profile-header">
+            <p class="eyebrow">My CORE</p>
+            <h1 id="Name">사용자</h1>
+            <small id="Permission"></small>
+        </header>
+
+        <section class="profile-grid">
+            <div class="info-box">
+                <h3>Lv.</h3>
+                <p id="LV">--</p>
+            </div>
+            <div class="info-box">
+                <h3>Created AT</h3>
+                <p id="created_at">--</p>
+            </div>
+            <div class="info-box">
+                <h3>Email</h3>
+                <p id="email">--</p>
+            </div>
+        </section>
+
+        <section class="buttons">
+            <button type="button" onclick="history.back()" class="btn-back">뒤로 가기</button>
+            <a href="/"><button>Home</button></a>
+            <button onclick="logout()">Log Out</button>
+            <button class="students_button" onclick="location.href='/students'">Show Students</button>
+        </section>
+    </main>
+
+    <script type="module" src="../JS/core-ui.js"></script>
+</body>
+
+</html>

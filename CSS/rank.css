@@ -1,0 +1,100 @@
+:root {
+    --bg: #101317;
+    --panel: #191f25;
+    --panel-soft: #222932;
+    --line: #303943;
+    --text: #eef3f1;
+    --muted: #99a6a0;
+    --green: #19c463;
+    --navy: #050536;
+    --shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Pretendard, "Segoe UI", sans-serif;
+}
+
+.rank-page {
+    width: min(960px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 38px 0;
+}
+
+.page-top {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.eyebrow {
+    color: var(--green);
+    font-size: 0.78rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    letter-spacing: 0;
+}
+
+button {
+    width: fit-content;
+    border: 0;
+    border-radius: 8px;
+    background: var(--navy);
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 800;
+    padding: 10px 16px;
+}
+
+button:hover {
+    background: var(--green);
+    color: #07100b;
+}
+
+.rank-panel {
+    overflow: auto;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.rank-table {
+    width: 100%;
+    min-width: 620px;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border-bottom: 1px solid var(--line);
+    padding: 16px;
+    text-align: left;
+}
+
+th {
+    background: #141a20;
+    color: var(--green);
+    font-size: 0.86rem;
+    text-transform: uppercase;
+}
+
+td {
+    color: #d6dfda;
+}
+
+tbody tr:hover {
+    background: var(--panel-soft);
+}

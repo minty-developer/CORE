@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Detail</title>
+    <link href="../CSS/students_detail.css" rel="stylesheet">
+</head>
+
+<body>
+    <main class="student-page">
+        <button type="button" class="back-button" onclick="location.href='/students'">목록으로 돌아가기</button>
+
+        <header class="student-header">
+            <p class="eyebrow">Student Profile</p>
+            <h1 id="student_name">학생 로딩 중...</h1>
+            <p id="student_lv">LV. --</p>
+        </header>
+
+        <section class="streak-container">
+            <div class="streak-header">
+                <div>
+                    <p class="eyebrow">Activity</p>
+                    <h3 id="streak-title">학습 기록</h3>
+                </div>
+                <div class="streak-stats">
+                    <span>총 해결 문제: <strong id="total-solved">0</strong></span>
+                    <span>최대 연속 일수: <strong id="max-streak">0</strong></span>
+                </div>
+            </div>
+
+            <div id="streak-board" class="streak-board-wrapper">
+                <p class="loading-text">활동 데이터를 분석 중입니다...</p>
+            </div>
+
+            <div class="streak-footer">
+                <div class="legend">
+                    <span>Less</span>
+                    <div class="sample-box level-0" title="0 problems"></div>
+                    <div class="sample-box level-1" title="1-2 problems"></div>
+                    <div class="sample-box level-2" title="3-4 problems"></div>
+                    <div class="sample-box level-3" title="5-6 problems"></div>
+                    <div class="sample-box level-4" title="7+ problems"></div>
+                    <span>More</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="../JS/core-ui.js"></script>
+</body>
+
+</html>

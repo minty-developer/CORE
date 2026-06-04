@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem Solve</title>
+    <link rel="stylesheet" href="../CSS/solve_detail.css">
+</head>
+
+<body>
+    <main class="solve-container">
+        <header class="solve-header">
+            <div>
+                <p class="eyebrow">Problem</p>
+                <h1 id="problem_title">Loading...</h1>
+            </div>
+            <button onclick="location.href='/resolve';">목록</button>
+        </header>
+
+        <div class="meta-info">
+            <span><strong>난이도</strong> <span id="problem_diff" class="badge">--</span></span>
+            <span><strong>제한 사항</strong> <span id="problem_limit">--</span></span>
+        </div>
+
+        <section class="description-section">
+            <div class="section-header">
+                <h2>문제 설명</h2>
+            </div>
+            <div id="problem_desc" class="content-render">문제를 불러오는 중입니다...</div>
+        </section>
+
+        <section class="input-section">
+            <div class="section-header">
+                <h2>정답 작성</h2>
+                <small>C 언어 기준</small>
+            </div>
+            <div class="editor-toolbar">
+                <small>Tab 키로 들여쓰기를 사용할 수 있습니다.</small>
+            </div>
+            <div class="code-editor-container">
+                <div class="line-numbers" id="lineNumbers"></div>
+                <div class="code-area">
+                    <pre id="highlightingLayer"></pre>
+                    <textarea id="answerInput" placeholder="#include <stdio.h>
+
+int main() {
+    return 0;
+}" spellcheck="false"></textarea>
+                </div>
+            </div>
+
+            <div class="action-bar">
+                <button type="button" class="btn-back" onclick="history.back()">뒤로 가기</button>
+                <button id="submitBtn" class="btn-submit">코드 제출하기</button>
+            </div>
+        </section>
+
+        <section id="resultDisplay" class="result-display">
+            <span id="statusBadge" class="badge">Ready</span>
+            <p id="outputMessage"></p>
+        </section>
+    </main>
+
+    <script type="module" src="../JS/core-ui.js"></script>
+</body>
+
+</html>

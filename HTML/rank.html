@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rank</title>
+    <link rel="stylesheet" href="../CSS/rank.css">
+</head>
+
+<body>
+    <main class="rank-page">
+        <header class="page-top">
+            <a href="/"><button>HOME</button></a>
+            <p class="eyebrow">Leaderboard</p>
+            <h1>Rank</h1>
+        </header>
+
+        <section class="rank-panel">
+            <table class="rank-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>LV</th>
+                        <th>Solved</th>
+                    </tr>
+                </thead>
+                <tbody id="rank-list">
+                    <tr>
+                        <td colspan="4">Loading rank data...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script type="module" src="../JS/core-ui.js"></script>
+</body>
+
+</html>

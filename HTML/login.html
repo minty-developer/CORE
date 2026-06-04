@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Access</title>
+    <link href="../CSS/Account.css" rel="stylesheet">
+</head>
+
+<body>
+    <main class="container">
+        <div class="brand">
+            <p class="eyebrow">CORE Account</p>
+            <h1>Welcome</h1>
+        </div>
+
+        <div class="tab-menu">
+            <button class="tab-btn active" onclick="showForm('login')">로그인</button>
+            <button class="tab-btn" onclick="showForm('signup')">회원가입</button>
+        </div>
+
+        <section id="loginForm" class="form-content active">
+            <h2>Log In</h2>
+            <form action="/loginto" method="post">
+                <input id="login_username" type="text" name="username" placeholder="Input username" required>
+                <input id="login_password" type="password" name="password" placeholder="Input password" required>
+                <button id="login_submit_btn">Login</button>
+            </form>
+            <div class="links">
+                <a href="/Change_password">비밀번호 찾기</a>
+            </div>
+        </section>
+
+        <section id="signupForm" class="form-content">
+            <h2>Sign Up</h2>
+            <form action="/signup" method="post" autocomplete="off">
+                <input type="text" name="username" placeholder="Input username" required autocomplete="off">
+                <input type="password" name="password" placeholder="Input password" required autocomplete="new-password">
+                <input type="email" id="email" name="email" placeholder="Input Email" required autocomplete="off">
+                <button type="button" class="btn-verify" onclick="sendEmailCode()">인증코드 받기</button>
+                <input type="text" name="input" placeholder="Input certificate code" required autocomplete="one-time-code">
+                <button type="submit" class="btn-primary">Sign Up</button>
+            </form>
+        </section>
+
+        <a href="/"><button class="btn-secondary">Home</button></a>
+    </main>
+
+    <script type="module" src="../JS/core-ui.js"></script>
+</body>
+
+</html>
